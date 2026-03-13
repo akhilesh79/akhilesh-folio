@@ -1,0 +1,26 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
+  <defs>
+    <linearGradient id="bg" x1="32" y1="32" x2="224" y2="224" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#075985"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="64" y1="56" x2="168" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="128" cy="128" r="120" fill="url(#bg)"/>
+  <path d="M56 76C74 44 102 28 128 28C156 28 182 44 200 76C186 60 156 48 128 48C100 48 70 60 56 76Z" fill="url(#shine)"/>
+
+  <!-- head -->
+  <circle cx="128" cy="104" r="40" fill="white" fill-opacity="0.92"/>
+  <!-- shoulders -->
+  <path
+    d="M56 214c10-42 44-70 72-70s62 28 72 70"
+    stroke="white"
+    stroke-opacity="0.92"
+    stroke-width="28"
+    stroke-linecap="round"
+  />
+</svg>

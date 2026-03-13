@@ -1,0 +1,49 @@
+/* load roboto from google fonts for consistent typography */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* limit the base font size so that `sm` is effectively the largest
+       size used; headings may scale but we keep overall text small */
+    font-size: 0.875rem; /* 14px */
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans antialiased text-sm;
+    @apply dark:bg-gray-950 dark:text-gray-50;
+  }
+}
+
+@layer components {
+  .section-container {
+    /* keep vertical padding minimal across all sections */
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8;
+  }
+
+  .section-title {
+    /* keep titles consistent but never exceed small size */
+    @apply text-sm font-bold text-gray-900 dark:text-gray-50 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-sm text-gray-600 dark:text-gray-300 mb-8;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-900/60 rounded-lg shadow-md p-3 hover:shadow-xl transition-shadow duration-300;
+    @apply border border-gray-100 dark:border-gray-800/80;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-300;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-primary-600 text-primary-700 dark:text-primary-300 px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-all duration-300;
+  }
+}
