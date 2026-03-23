@@ -1,155 +1,151 @@
-import { useMemo, useState } from 'react'
-import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa'
-import { useActiveSection } from '../hooks/useActiveSection'
-import { useTheme } from '../hooks/useTheme'
+import { useMemo, useState } from 'react';
+import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
+import { useActiveSection } from '../hooks/useActiveSection';
+import { useTheme } from '../hooks/useTheme';
+
+const AVATAR_URL = 'https://avatars.githubusercontent.com/u/128993309?v=4';
 
 interface NavbarProps {
-  isScrolled: boolean
+  isScrolled: boolean;
 }
 
 const Navbar = ({ isScrolled }: NavbarProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { theme, toggle } = useTheme()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   const navItems = useMemo(
     () => [
       { name: 'Home', href: '#home', id: 'home' },
       { name: 'About', href: '#about', id: 'about' },
       { name: 'Skills', href: '#skills', id: 'skills' },
+      { name: 'Projects', href: '#projects', id: 'projects' },
       { name: 'Experience', href: '#experience', id: 'experience' },
       { name: 'Education', href: '#education', id: 'education' },
       { name: 'Contact', href: '#contact', id: 'contact' },
     ],
     [],
-  )
+  );
 
-  const activeId = useActiveSection(navItems.map((i) => i.id))
+  const activeId = useActiveSection(navItems.map((i) => i.id));
 
   const handleNavClick = (href: string) => {
-    setIsMenuOpen(false)
-    const element = document.querySelector(href)
+    setIsMenuOpen(false);
+    const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-  }
+  };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 dark:bg-gray-950/80 backdrop-blur shadow-sm py-3'
-          : 'bg-transparent py-3'
+          ? 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800/50 py-3'
+          : 'bg-transparent py-4'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div className="flex-shrink-0">
+      <div className='max-w-6xl mx-auto px-5 sm:px-8 lg:px-10'>
+        <div className='flex items-center justify-between'>
+          <div className='flex-shrink-0'>
             <a
-              href="#home"
+              href='#home'
               onClick={(e) => {
-                e.preventDefault()
-                handleNavClick('#home')
+                e.preventDefault();
+                handleNavClick('#home');
               }}
-              className="inline-flex items-center gap-2 transition-transform hover:scale-[1.02]"
-              aria-label="Go to Home"
+              className='inline-flex items-center gap-2.5 transition-transform hover:scale-[1.02]'
+              aria-label='Go to Home'
             >
               <img
-                src="/avatar.svg"
-                alt="Avatar"
-                className="h-10 w-10 rounded-full border border-white/50 dark:border-gray-800 shadow-sm"
+                src={AVATAR_URL}
+                alt='Avatar'
+                className='h-9 w-9 rounded-full object-cover border-2 border-white dark:border-gray-800 shadow-sm'
               />
+              <span className='hidden sm:block text-sm font-bold text-gray-900 dark:text-gray-50'>
+                Akhilesh<span className='text-primary-600 dark:text-primary-400'>.</span>
+              </span>
             </a>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className='hidden md:flex items-center gap-1'>
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={(e) => {
-                  e.preventDefault()
-                  handleNavClick(item.href)
+                  e.preventDefault();
+                  handleNavClick(item.href);
                 }}
                 aria-current={activeId === item.id ? 'page' : undefined}
                 className={[
-                  'text-sm font-medium transition-colors duration-200',
+                  'px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200',
                   activeId === item.id
-                    ? 'text-primary-700 dark:text-primary-300'
-                    : 'text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-300',
+                    ? 'text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-50 hover:bg-gray-50 dark:hover:bg-gray-800/50',
                 ].join(' ')}
               >
                 {item.name}
               </a>
             ))}
 
+            <div className='w-px h-5 bg-gray-200 dark:bg-gray-700 mx-2' />
+
             <button
-              type="button"
+              type='button'
               onClick={toggle}
               aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
               title={theme === 'dark' ? 'Light theme' : 'Dark theme'}
               className={[
-                'inline-flex h-10 w-10 items-center justify-center rounded-xl',
-                'border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60',
-                'text-gray-800 dark:text-gray-50',
-                'transition-all hover:-translate-y-0.5 hover:shadow-sm',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2',
-                'focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950',
+                'inline-flex h-9 w-9 items-center justify-center rounded-lg',
+                'text-gray-500 dark:text-gray-400',
+                'transition-all hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
               ].join(' ')}
             >
-              {theme === 'dark' ? <FaSun /> : <FaMoon />}
+              {theme === 'dark' ? <FaSun className='text-sm' /> : <FaMoon className='text-sm' />}
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className='md:hidden flex items-center gap-2'>
             <button
-              type="button"
+              type='button'
               onClick={toggle}
               aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
               title={theme === 'dark' ? 'Light theme' : 'Dark theme'}
-              className={[
-                'inline-flex h-10 w-10 items-center justify-center rounded-xl',
-                'border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60',
-                'text-gray-800 dark:text-gray-50',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2',
-                'focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950',
-              ].join(' ')}
+              className='inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
             >
-              {theme === 'dark' ? <FaSun /> : <FaMoon />}
+              {theme === 'dark' ? <FaSun className='text-sm' /> : <FaMoon className='text-sm' />}
             </button>
 
             <button
-              className="text-gray-700 dark:text-gray-200 focus:outline-none"
+              className='inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label='Toggle menu'
             >
-              {isMenuOpen ? (
-                <FaTimes className="h-6 w-6" />
-              ) : (
-                <FaBars className="h-6 w-6" />
-              )}
+              {isMenuOpen ? <FaTimes className='h-5 w-5' /> : <FaBars className='h-5 w-5' />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-950/80 backdrop-blur animate-slide-down">
+          <div className='md:hidden mt-3 p-3 rounded-2xl border border-gray-100 dark:border-gray-800/60 bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl animate-slide-down shadow-lg'>
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={(e) => {
-                  e.preventDefault()
-                  handleNavClick(item.href)
+                  e.preventDefault();
+                  handleNavClick(item.href);
                 }}
                 aria-current={activeId === item.id ? 'page' : undefined}
                 className={[
-                  'block py-2 text-sm font-medium transition-colors',
+                  'block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
                   activeId === item.id
-                    ? 'text-primary-700 dark:text-primary-300'
-                    : 'text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-300',
+                    ? 'text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50',
                 ].join(' ')}
               >
                 {item.name}
@@ -159,7 +155,7 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
         )}
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

@@ -1,105 +1,93 @@
-import { FaBriefcase } from 'react-icons/fa'
+import { FaBriefcase } from 'react-icons/fa';
 
-interface Experience {
-  company: string
-  position: string
-  duration: string
-  location: string
-  achievements: string[]
+interface ExperienceItem {
+  company: string;
+  position: string;
+  duration: string;
+  location: string;
+  achievements: string[];
 }
 
+const experiences: ExperienceItem[] = [
+  {
+    company: 'UPRIO',
+    position: 'Software Engineer',
+    duration: 'Mar 2024 – Present',
+    location: 'Bengaluru, India',
+    achievements: [
+      'Led end-to-end development of a Parent Dashboard with real-time student progress, live classes, and performance analytics.',
+      'Built a real-time analytics engine using AWS SQS for chapter-level comprehension scoring and student classification.',
+      'Designed an AI-powered skill suggestion system using Google Gemini AI with structured prompt engineering and confidence scoring.',
+      'Integrated Sanity CMS with GROQ queries for scalable, dynamic content management.',
+      'Developed automated student reporting with Puppeteer PDF pipeline, batch processing, and AWS S3 uploads.',
+      'Built tutor evaluation platform for notebook submissions, polls, and practice papers with automated progress reports.',
+    ],
+  },
+  {
+    company: 'CODOSPHERE',
+    position: 'Software Engineer',
+    duration: 'Aug 2023 – Feb 2024',
+    location: 'India',
+    achievements: [
+      'Designed SwitchMyLoan.in for comparing and applying for home, auto, and personal loans.',
+      'Developed SML-Nucleus backend server with APIs for integrations and core business workflows.',
+      'Built the SML Partner Connect App for seamless partner interactions and lead tracking.',
+      'Mentored junior developers and established clean coding practices.',
+    ],
+  },
+  {
+    company: "BYJU'S",
+    position: 'Associate Software Engineer',
+    duration: 'Oct 2021 – Aug 2023',
+    location: 'India',
+    achievements: [
+      'Built grade-switch and academic-year transition features on UXOS platform.',
+      'Developed and consumed RESTful APIs for smooth frontend-backend communication.',
+      'Integrated third-party APIs and handled unit testing, debugging, and production issues.',
+    ],
+  },
+];
+
 const Experience = () => {
-  const experiences: Experience[] = [
-    {
-      company: 'UPRIO',
-      position: 'Software Engineer',
-      duration: 'Mar 2024 – Present',
-      location: 'Bengaluru, India',
-      achievements: [
-        'Led the end to end development of a Parent Dashboard providing real-time visibility into student progress, live classes, chapter wise evaluations, and performance analytics, enabling parents to clearly identify learning gaps and strengths.',
-        'Built a real time student performance analytics engine using AWS SQS to process evaluation data at scale, computing chapter level comprehension and question category understanding, and classifying students as strong, needs practice, or re-teach required.',
-        'Implemented a school exam marksheet upload feature to group students by learning levels and support personalized teaching strategies.',
-        'Built a tutor evaluation and assessment platform that allows tutors to review notebook submissions, polls, and practice papers, with evaluation data that feed into automated progress reports.',
-        'Integrated Sanity CMS using GROQ queries to enable scalable and fully customizable content management with dynamic content delivery.',
-        'Designed and developed an AI-powered skill suggestion system using Google Gemini AI, leveraging structured JSON-based prompt engineering to analyze question category steps and map relevant skills with confidence scores. Integrated AI workflows with AWS SQS and Sanity CMS to support asynchronous, on demand skills recommendations.',
-        'Developed an automated student reporting system that generates monthly and chapter-wise performance reports using a Puppeteer-based PDF pipeline with batch processing and secure uploads to AWS S3.',
-      ],
-    },
-    {
-      company: 'CODOSPHERE',
-      position: 'Software Engineer',
-      duration: 'Aug 2023 – Feb 2024',
-      location: 'India',
-      achievements: [
-        'Designed SwitchMyLoan.in, allowing users to compare and apply for home, auto, and personal loans through streamlined digital journeys.',
-        'Developed SML-Nucleus, a backend server exposing APIs to support integrations and core business workflows.',
-        'Built the SML Partner Connect App to enable seamless interactions and lead tracking for SwitchMyLoan partners.',
-        'Interfaced with the Business Rules Engine (BRE) to fetch and display eligible loan offers.',
-        'Mentored junior developers and consistently followed clean coding and best development practices.',
-      ],
-    },
-    {
-      company: "BYJU'S",
-      position: 'Associate Software Engineer',
-      duration: 'Oct 2021 – Aug 2023',
-      location: 'India',
-      achievements: [
-        'Built a grade-switch and academic-year transition feature on UXOS.',
-        'Collaborated closely with design teams to deliver consistent and user-friendly interfaces.',
-        'Developed and consumed RESTful APIs to enable smooth front-end and back-end communication.',
-        'Integrated third-party APIs and handled unit testing, debugging, and production issue resolution.',
-      ],
-    },
-  ]
-
   return (
-    <section id="experience" className="section-container bg-white dark:bg-gray-950">
-      <h2 className="section-title text-center">Experience</h2>
-      <p className="section-subtitle text-center">
-        My professional journey and achievements
-      </p>
+    <section id='experience' className='section-container bg-gray-50/50 dark:bg-gray-900/30'>
+      <h2 className='section-title text-center'>Experience</h2>
+      <p className='section-subtitle text-center'>My professional journey and key achievements</p>
 
-      <div className="max-w-4xl mx-auto">
-        <div className="relative">
+      <div className='max-w-4xl mx-auto'>
+        <div className='relative'>
           {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-200 dark:bg-primary-900/50 hidden md:block"></div>
+          <div className='absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-primary-300 via-primary-200 to-transparent dark:from-primary-700 dark:via-primary-800 dark:to-transparent hidden md:block' />
 
-          <div className="space-y-8">
+          <div className='space-y-6'>
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className="relative flex items-start gap-4 animate-slide-in-left"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className='relative flex items-start gap-6 animate-slide-in-left'
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
                 {/* Timeline dot */}
-                <div className="hidden md:flex absolute left-6 w-4 h-4 bg-primary-600 rounded-full border-4 border-white dark:border-gray-950 shadow-lg z-10"></div>
+                <div className='hidden md:flex flex-shrink-0 w-10 h-10 items-center justify-center rounded-full bg-primary-50 dark:bg-primary-900/30 border-2 border-primary-300 dark:border-primary-700 z-10'>
+                  <FaBriefcase className='text-sm text-primary-600 dark:text-primary-400' />
+                </div>
 
-                <div className="md:ml-16 flex-1">
-                  <div className="card">
-                    <div className="flex items-start justify-between mb-4">
+                <div className='flex-1 md:ml-0 ml-0'>
+                  <div className='card'>
+                    <div className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4'>
                       <div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <FaBriefcase className="text-primary-600" />
-                          <h3 className="text-sm font-bold text-gray-900 dark:text-gray-50">
-                            {exp.position}
-                          </h3>
-                        </div>
-                        <p className="text-sm font-semibold text-primary-600 dark:text-primary-300 mb-1">
-                          {exp.company}
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-300">
-                          {exp.duration} | {exp.location}
-                        </p>
+                        <h3 className='text-lg font-bold text-gray-900 dark:text-gray-50'>{exp.position}</h3>
+                        <p className='text-sm font-semibold text-primary-600 dark:text-primary-400'>{exp.company}</p>
                       </div>
+                      <span className='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap'>{exp.duration}</span>
                     </div>
 
-                    <ul className="space-y-2 mt-4">
+                    <ul className='space-y-2'>
                       {exp.achievements.map((achievement, achIndex) => (
                         <li
                           key={achIndex}
-                          className="flex items-start gap-2 text-gray-700 dark:text-gray-200"
+                          className='flex items-start gap-2.5 text-sm text-gray-600 dark:text-gray-300'
                         >
-                          <span className="text-primary-600 mt-1.5">→</span>
+                          <span className='w-1.5 h-1.5 rounded-full bg-primary-400 dark:bg-primary-500 mt-2 flex-shrink-0' />
                           <span>{achievement}</span>
                         </li>
                       ))}
@@ -112,7 +100,7 @@ const Experience = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;

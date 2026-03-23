@@ -1,41 +1,70 @@
+import { FaCode, FaServer, FaCloud, FaUsers } from 'react-icons/fa';
+
+const highlights = [
+  {
+    icon: <FaCode className='text-lg' />,
+    title: 'Frontend',
+    desc: 'React, TypeScript, Tailwind — pixel-perfect UIs with great DX',
+  },
+  {
+    icon: <FaServer className='text-lg' />,
+    title: 'Backend',
+    desc: 'Node.js, Express, MongoDB — scalable APIs & real-time systems',
+  },
+  {
+    icon: <FaCloud className='text-lg' />,
+    title: 'Cloud',
+    desc: 'AWS Lambda, SQS, S3, SNS — serverless & event-driven architectures',
+  },
+  {
+    icon: <FaUsers className='text-lg' />,
+    title: 'Leadership',
+    desc: 'Mentoring juniors, code reviews, and end-to-end feature ownership',
+  },
+];
+
 const About = () => {
   return (
-    <section id="about" className="section-container bg-white dark:bg-gray-950">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="section-title text-center">About Me</h2>
-        <p className="section-subtitle text-center">
-          Get to know more about my background and passion
-        </p>
+    <section id='about' className='section-container'>
+      <div className='max-w-5xl mx-auto'>
+        <h2 className='section-title text-center'>About Me</h2>
+        <p className='section-subtitle text-center'>Get to know more about my background and passion</p>
 
-        <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
-          <p>
-            I'm a passionate Software Engineer specializing in Full Stack development
-            with the MERN stack. With over 3 years of experience, I've worked on
-            building scalable web applications, real-time systems, and AI-powered
-            solutions.
-          </p>
-          <p>
-            Currently working at <strong>UPRIO</strong>, I lead end-to-end development
-            of complex features including parent dashboards, real-time analytics engines,
-            and AI-powered skill suggestion systems. I'm experienced in working with
-            AWS services, integrating CMS platforms, and building automated reporting
-            systems.
-          </p>
-          <p>
-            My expertise spans across frontend and backend development, with a strong
-            focus on writing clean, maintainable, and scalable code. I'm always eager
-            to learn new technologies and take on challenging projects that push the
-            boundaries of what's possible.
-          </p>
-          <p>
-            When I'm not coding, I enjoy mentoring junior developers, contributing to
-            open-source projects, and staying updated with the latest industry trends
-            and best practices.
-          </p>
+        <div className='grid md:grid-cols-2 gap-12 items-start'>
+          {/* Text */}
+          <div className='space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed'>
+            <p>
+              I'm a <strong className='text-gray-900 dark:text-gray-50'>Software Engineer</strong> specializing in Full
+              Stack development with the MERN stack. With over 3 years of experience, I've built scalable web
+              applications, real-time systems, and AI-powered solutions.
+            </p>
+            <p>
+              Currently at <strong className='text-gray-900 dark:text-gray-50'>UPRIO</strong>, I lead end-to-end
+              development of complex features including parent dashboards, real-time analytics engines, and AI-powered
+              skill suggestion systems.
+            </p>
+            <p>
+              I believe in writing clean, maintainable code and I'm always eager to take on challenging projects that
+              push the boundaries of what's possible.
+            </p>
+          </div>
+
+          {/* Highlight cards */}
+          <div className='grid grid-cols-2 gap-4'>
+            {highlights.map((item) => (
+              <div key={item.title} className='card group text-center p-4'>
+                <div className='inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 mb-3 group-hover:scale-110 transition-transform'>
+                  {item.icon}
+                </div>
+                <h3 className='font-semibold text-gray-900 dark:text-gray-50 text-sm mb-1'>{item.title}</h3>
+                <p className='text-xs text-gray-500 dark:text-gray-400 leading-snug'>{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;

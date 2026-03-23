@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Akhilesh Kumar Mishra - Software Engineer | Full Stack (MERN) Developer Portfolio" />
-    <!-- prefetch roboto, the stylesheet is imported in index.css so we don't
-         need the Inter link any longer -->
+    <meta
+      name="description"
+      content="Akhilesh Kumar Mishra - Software Engineer | Full Stack (MERN) Developer Portfolio"
+    />
+    <!-- preconnect for Inter font loaded in index.css -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Akhilesh Kumar Mishra - Software Engineer</title>
@@ -19,9 +21,7 @@
           var key = 'am_theme';
           var theme = localStorage.getItem(key);
           if (!theme) {
-            theme = window.matchMedia('(prefers-color-scheme: dark)').matches
-              ? 'dark'
-              : 'light';
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
           }
           if (theme === 'dark') {
             document.documentElement.classList.add('dark');
