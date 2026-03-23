@@ -1,9 +1,6 @@
-name: Link Check
+name: Lint Check
 
 on:
-  # Run after Vercel (or any) deployment completes
-  deployment_status:
-
   # Also run on pushes/PRs to main
   push:
     branches: [main]
@@ -13,8 +10,6 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    if: github.event_name != 'deployment_status'
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,3 +25,6 @@ jobs:
 
       - name: Run lint
         run: npm run lint
+
+      - name: Build project
+        run: npm run build
