@@ -16,14 +16,15 @@ const projects: Project[] = [
     title: 'Dev Tinder',
     emoji: '💻',
     description:
-      'A full-stack social platform for developers to connect, match, and network — inspired by Tinder. Features real-time feed, user authentication, profile management, and connection requests.',
+      'A full-stack platform for developers to discover each other, build meaningful connections, and continue conversations after matching. It combines authentication, profile management, connection workflows, and real-time messaging in one product.',
     tech: ['React', 'Redux Toolkit', 'Node.js', 'Express', 'MongoDB', 'JWT Auth', 'Tailwind CSS', 'DaisyUI', 'AWS EC2'],
     github: 'https://github.com/akhilesh79',
     highlights: [
       'JWT-based auth with secure cookie handling',
-      'Swipe-based feed to send/ignore connection requests',
+      'Like and dislike feed to send/ignore connection requests',
       'Accept or reject incoming requests in real-time',
       'Edit profile with live preview & toast notifications',
+      'Real-time chat built with Socket.IO',
       'Deployed on AWS EC2 with Nginx reverse proxy',
     ],
     gradient: 'from-rose-500 to-pink-600',
